@@ -1,33 +1,77 @@
+/* global chrome */
+
 import React from 'react';
+import "./index.css";
+import MainPage from './components/MainPage';
+import FormPage from './components/FormPage';
+import NotePage from './components/NotePage';
+import EditNotePage from './components/EditNotePage';
+import { ROUTES } from './utils/routes'
+import { useState , useEffect } from 'react';
 
 function App() {
+
+  const [notesData, setNotesData] = useState([]);
+  const [page, setPage] = useState(ROUTES.MainPage);
+  const [selectedNote, setSelectedNote] = useState({});
+  const [notesCount, setNotesCount] = useState();
+  const [reviewPromptShownFor, setReviewPromptShownFor] = useState(false);
+
+  useEffect(() => {
+    chrome.runtime.sendMessage({ type: 'dataRequest' }, (response) => {
+      if (response.success) {
+        setNotesData(response.data);
+        setNotesCount(response.notesCount);
+        setReviewPromptShownFor(response.reviewPromptShownFor);
+        console.log('The notes data has been updated : ',notesData);
+      }else{
+        console.log('The response of the dataRequest was not a success !');
+      }
+    })
+  },[page]);
+
+  function handlePinned (noteID) {
+    chrome.runtime.sendMessage({ type: 'pinnedNoteToggle' , data: noteID }, (response) => {
+      if (response.success){
+        setNotesData(response.data);
+      }
+    });
+  }
+
+  function renderPage () {
+    switch (page) {
+      case ROUTES.MainPage:
+        return <MainPage 
+                  notesData={notesData}
+                  setPage={setPage}
+                  setSelectedNote={setSelectedNote}
+                  handlePinned={handlePinned}
+                  notesCount={notesCount}
+                  reviewPromptShownFor={reviewPromptShownFor}
+                />
+      case ROUTES.FormPage:
+        return <FormPage setPage={setPage} setSelectedNote={setSelectedNote} />
+      case ROUTES.NotePage:
+        return <NotePage selectedNote={selectedNote} setPage={setPage}/>
+      case ROUTES.EditNotePage:
+        return <EditNotePage selectedNote={selectedNote} setPage={setPage} setSelectedNote={setSelectedNote}/>
+      default:
+        return <MainPage notesData={notesData} setPage={setPage} setSelectedNote={setSelectedNote} handlePinned={handlePinned} notesCount={notesCount} reviewPromptShownFor={reviewPromptShownFor} />
+    }
+  }
+
+
+
   return (
-    <div className="flex flex-col h-full items-center justify-center bg-gray-200 text-gray-700">
-      <div className="flex items-center">
-        <h1 className="text-6xl font-thin tracking-wider">Create React App + Tailwind CSS</h1>
+    <>
+      <div className='background'>
+          <div className='gradient' />
       </div>
-      <p className="my-6 tracking-wide">
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <div className="mt-6 flex justify-center">
-        <a
-          className="uppercase hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="ml-10 uppercase hover:underline"
-          href="https://tailwindcss.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Tailwind
-        </a>
-      </div>
-    </div>
+      <main className='z-20'>
+        {renderPage()}
+      </main>
+    </>
+    
   );
 }
 

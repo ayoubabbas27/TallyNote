@@ -3,3 +3,129 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer base {
+    html {
+        font-family: 'Montserrat', system-ui, sans-serif;
+    }
+}
+
+.background {
+    width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    padding: 120px 24px 160px 24px;
+    pointer-events: none;
+    z-index: -1;
+}
+.background:before {
+    background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+    position: absolute;
+    content: "";
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.background:after {
+    content: "";
+    background-image: url("./images/grid.svg");
+    z-index: -3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0.4;
+    filter: invert(1);
+}
+.gradient {
+    height: fit-content;
+    z-index: -1;
+    width: 100%;
+    max-width: 640px;
+    background-image: radial-gradient(
+        at 27% 37%,
+        hsla(215, 98%, 61%, 1) 0px,
+        transparent 0
+      ),
+      radial-gradient(at 97% 21%, hsl(225, 100%, 60%) 0px, transparent 50%),
+      radial-gradient(at 52% 99%, hsl(240, 100%, 90%) 0px, transparent 50%),
+      radial-gradient(at 10% 29%, hsl(260, 100%, 70%) 0px, transparent 50%),
+      radial-gradient(at 97% 96%, hsl(240, 100%, 40%) 0px, transparent 50%),
+      radial-gradient(at 33% 50%, hsl(32, 77%, 51%) 0px, transparent 50%),
+      radial-gradient(at 79% 53%, rgb(248, 131, 252) 0px, transparent 50%);
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    filter: blur(100px) saturate(150%);
+    top: 80px;
+    opacity: 0.40;
+}
+
+.top_section{
+    @apply w-full fixed top-0 flex flex-col justify-center items-center ;
+    z-index: 1500;
+}
+.header{
+    @apply w-full h-[87px] rounded-bl-[33px] rounded-br-[33px] px-4 pt-5 pb-4 bg-[#0B0B0B] flex flex-row justify-between items-start;
+}
+.notes_list{
+    @apply pt-32 px-4 pb-3 flex flex-col gap-4;
+    z-index: 20;
+}
+.text_editor_btn {
+    @apply p-1 rounded-md hover:cursor-pointer hover:bg-slate-200 active:bg-slate-100 outline-none focus:outline-none;
+}
+
+#write_content:empty:before {
+    content: attr(data-placeholder);
+    color: #9CA3AF;
+}
+
+input::placeholder {
+    color: #9CA3AF; /* Light gray */
+}
+a {
+    @apply text-sky-400 transition-all duration-300 ease-in-out hover:cursor-pointer hover:text-sky-500 active:text-sky-600 underline;
+}
+
+ul {
+    @apply list-disc; /* Apply Tailwind's list-disc style (unordered list) */
+    margin-left: 1.5rem;
+}
+
+ol {
+    @apply list-decimal; /* Apply Tailwind's list-decimal style (ordered list) */
+    margin-left: 1.5rem; /* Adjust margin as needed */
+}
+
+/* Custom CSS for Tilt Effect */
+.note-card {
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .review-prompt-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px); /* Adds a slight blur effect to the background */
+    background-color: rgba(0, 0, 0, 0.171); /* Semi-transparent black background */
+}
+
+.review-prompt {
+    z-index: 1100; 
+    width: 300px; /* Adjust width as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
