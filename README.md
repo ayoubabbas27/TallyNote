@@ -1,5 +1,8 @@
 # TallyNote - Chrome Extension for Note-Taking and Task Management
 
+## Try it yourself:
+Download TallyNote chrome extension from the [chrome web store](https://chromewebstore.google.com/detail/tallynote/ehhoabpbgbbainagbdjjdjkgjemnklno?utm_source=ext_app_menu)
+
 ## Overview
 TallyNote is a simple and efficient Chrome extension designed for note-taking and task management. It enables users to organize tasks, jot down ideas, and stay productive directly from their browser. With its clean interface and ease of use, TallyNote enhances productivity seamlessly.
 
