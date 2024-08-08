@@ -3,8 +3,12 @@
 ## Try it yourself:
 Download TallyNote chrome extension from the [chrome web store](https://chromewebstore.google.com/detail/tallynote/ehhoabpbgbbainagbdjjdjkgjemnklno?utm_source=ext_app_menu)
 
+<hr />
+
 ## Overview
 TallyNote is a simple and efficient Chrome extension designed for note-taking and task management. It enables users to organize tasks, jot down ideas, and stay productive directly from their browser. With its clean interface and ease of use, TallyNote enhances productivity seamlessly.
+
+<hr />
 
 ## Features
 - **Note-Taking**: Quickly jot down ideas and notes.
@@ -13,6 +17,8 @@ TallyNote is a simple and efficient Chrome extension designed for note-taking an
 - **Clean Interface**: User-friendly design focused on enhancing productivity.
 - **Persistent Storage**: Notes and tasks are saved and synced across sessions.
 
+<hr />
+
 ## Technical Stack
 - **Frontend**: 
   - **HTML5**: For structuring the extension interface.
@@ -20,12 +26,16 @@ TallyNote is a simple and efficient Chrome extension designed for note-taking an
   - **JavaScript**: For handling the extension logic.
   - **Chrome Extension API**: For integrating with the browser and managing extension functionality.
 
+<hr />
+
 ## Screenshots
 ### Main Interface
 ![Main Interface](display_assets/chrome_capture1.png)
 
 ### Task Creation
 ![Task Management](display_assets/chrome_capture2.png)
+
+<hr />
 
 ## Challenges and Solutions
 ### Browser Integration:
@@ -39,6 +49,8 @@ TallyNote is a simple and efficient Chrome extension designed for note-taking an
 ### User Interface Design:
 - **Challenge**: Creating an intuitive and clean interface to enhance productivity.
 - **Solution**: Used modern web design principles and CSS for a clean and user-friendly interface.
+
+<hr />
 
 ## Contributing
 Contributions are welcome! If you have any suggestions, improvements, or bug fixes, please fork the repository and submit a pull request.
