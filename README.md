@@ -19,10 +19,10 @@ TallyNote is a simple and efficient Chrome extension designed for note-taking an
 
 ## Screenshots
 ### Main Interface
-![Main Interface](screenshots/main-interface.png)
+![Main Interface](display_assets/chrome_capture1.png)
 
 ### Task Management
-![Task Management](screenshots/task-management.png)
+![Task Management](display_assets/chrome_capture2.png)
 
 ## Challenges and Solutions
 ### Browser Integration:
